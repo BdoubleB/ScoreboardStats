@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.games647</groupId>
+    <artifactId>scoreboardstats</artifactId>
+    <packaging>pom</packaging>
+    <version>0.6</version>
+    <description>Show the Scoreboard with custom variables</description>
+    <url>http://dev.bukkit.org/bukkit-plugins/scoreboardstats</url>
+    <name>ScoreboardStats</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/games647/ScoreboardStats/issues</url>
+    </issueManagement>
+
+    <scm>
+        <url>https://github.com/games647/ScoreboardStats</url>
+        <tag>HEAD</tag>
+        <connection>scm:git:git://github.com/games647/ScoreboardStats.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:games647/ScoreboardStats.git</developerConnection>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>LATEST</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>0.11.8</version>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <defaultGoal>clean install</defaultGoal>
+        <finalName>${project.name}</finalName>
+        <directory>../../target</directory>
+
+        <sourceDirectory>../../src/main/java</sourceDirectory>
+        <testSourceDirectory>../../src/test</testSourceDirectory>
+
+        <resources>
+            <resource>
+                <directory>../../src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <debug>false</debug>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                    <verbose>true</verbose>
+                    <optimize>true</optimize>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                    <excludes>
+                        <exclude>**/variables/</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <modules>
+        <module>sub/main</module>
+    </modules>
+</project>
